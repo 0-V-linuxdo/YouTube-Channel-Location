@@ -1,17 +1,35 @@
 // ==UserScript==
-// @name         [YouTube] Channel Location [20260103] v1.0.0
-// @namespace    https://github.com/0-V-linuxdo/YouTube-Channel-Location
-// @version      [20260103] v1.0.0
-// @update-log:  [20260103] v1.0.0 初始化发布：完善设置面板；修复频道页/搜索页组件插入与样式；未知国家显示❓
-// @description  在 YouTube 页面显示频道的国家/地区（Location/Country）
+// @name                [YouTube] Channel Location [20260106] v1.0.0
+// @name:zh-CN          [YouTube] 显示频道国家/地区 [20260106] v1.0.0
+// @namespace           https://github.com/0-V-linuxdo/YouTube-Channel-Location
+// @description         Show channel location/country on YouTube
+// @description:zh-CN   在 YouTube 页面显示频道的国家/地区（Location/Country）
+//
+// @version      [20260106] v1.0.0
+// @update-log   [20260106] v1.0.0 Add fork notice (upstream credits)
+//
+// @license      MIT
+//
 // @match        https://www.youtube.com/*
+//
 // @run-at       document-start
+//
 // @grant        GM_addStyle
 // @grant        GM_getValue
 // @grant        GM_setValue
 // @grant        GM_deleteValue
 // @grant        GM_registerMenuCommand
+//
+// @icon         https://github.com/0-V-linuxdo/YouTube-Channel-Location/raw/refs/heads/main/icon/icon.svg
 // ==/UserScript==
+
+// ================================================
+// Fork Notice (Upstream Credits):
+// Name:    YouTubeChannelLocation
+// Author:  arsxrs
+// Link:    https://github.com/arsxrs/YouTubeChannelLocation?tab=readme-ov-file
+// Version: 1.3
+// ================================================
 
 (async () => {
   'use strict';
