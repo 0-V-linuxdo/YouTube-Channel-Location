@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
+    </style>
+  </defs>
+
+  <!-- 背景 (白色) -->
+  <rect width="512" height="512" fill="#ffffff" rx="20"/>
+
+  <!-- 图标主体部分 (中心点移至 256, 220) -->
+  <g transform="translate(256, 220)">
+    <!-- 地球经纬网格 (线条加粗至 8px，颜色加深至 #9ca3af) -->
+    <g stroke="#9ca3af" stroke-width="8" fill="none">
+      <!-- 外圈圆 -->
+      <circle cx="0" cy="0" r="130" />
+      <!-- 纵向椭圆 (经线) -->
+      <ellipse cx="0" cy="0" rx="60" ry="130" />
+      <!-- 横向直线 (赤道) -->
+      <line x1="-130" y1="0" x2="130" y2="0" />
+    </g>
+
+    <!-- 红色圆角矩形背景 (尺寸放大 1.1 倍，颜色调整为 #dc2626) -->
+    <!-- 原尺寸 160x110 -> 现尺寸 176x121 -->
+    <rect x="-88" y="-60.5" width="176" height="121" rx="20" ry="20" fill="#dc2626" />
+
+    <!-- 白色播放按钮 (同比例放大 1.1 倍) -->
+    <path d="M-15 -20 L25 0 L-15 20 Z" fill="#ffffff" transform="scale(1.1)" />
+  </g>
+
+  <!-- 文字部分 (上移以平衡视觉重心) -->
+  <g font-family="'Roboto Condensed', sans-serif" font-weight="700" text-anchor="middle" font-size="52">
+    <!-- Channel: 保持深黑色，Y坐标上移至 400 -->
+    <text x="256" y="400" fill="#212121">CHANNEL</text>
+    <!-- Location: 保持红色，Y坐标上移至 460 -->
+    <text x="256" y="460" fill="#D93025">LOCATION</text>
+  </g>
+</svg>
