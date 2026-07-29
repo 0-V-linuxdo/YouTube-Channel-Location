@@ -1,11 +1,12 @@
 // ==UserScript==
-// @name                [YouTube] Channel Location [20260106] v1.0.0
-// @name:zh-CN          [YouTube] 显示频道国家/地区 [20260106] v1.0.0
+// @name                [YouTube] Channel Location [20260729] v1.0.0
+// @name:zh-CN          [YouTube] 显示频道国家/地区 [20260729] v1.0.0
 // @namespace           https://github.com/0-V-linuxdo/YouTube-Channel-Location
 // @description         Show channel location/country on YouTube
 // @description:zh-CN   在 YouTube 页面显示频道的国家/地区（Location/Country）
 //
-// @version      [20260106] v1.0.0
+// @version      [20260729] v1.0.0
+// @update-log   [20260729] v1.0.0 Show location only in the channel header on channel pages
 // @update-log   [20260106] v1.0.0 Add fork notice (upstream credits)
 //
 // @license      MIT
@@ -717,7 +718,6 @@
 
     if (pageType === 'channel') {
       await renderChannelHeaderPill(seq);
-      observeAndScanPage(seq);
       return;
     }
 
@@ -729,12 +729,7 @@
     if (!anchor.isConnected) return false;
     if (anchor.closest(`#${SETTINGS_ROOT_ID}`)) return false;
     if (anchor.closest(PILL_SELECTOR)) return false;
-    if (
-      getPageType() === 'channel' &&
-      anchor.closest('ytd-c4-tabbed-header-renderer, yt-page-header-renderer, ytd-channel-page-header-renderer')
-    ) {
-      return false;
-    }
+    if (getPageType() === 'channel') return false;
 
     const text = (anchor.textContent || '').trim();
     if (!text) return false;

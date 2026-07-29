@@ -7,6 +7,7 @@
 ## 功能
 
 - 在多个页面类型显示频道国家/地区：`watch`、首页、频道页、搜索结果、订阅、Trending/Explore、Shorts
+- 频道页仅在顶部频道标题旁显示一次，不在视频列表等内容区重复显示
 - 懒加载 + 并发限制（默认最多 4 个请求并发），尽量减少对页面性能的影响
 - 本地缓存（可选）：减少重复请求；支持一键清空缓存
 - 可配置「未知国家/地区」的占位文本（默认：`❓`）
@@ -17,7 +18,7 @@
 1. 安装脚本管理器（任选其一）：
    - Chrome/Edge：Tampermonkey 或 Violentmonkey
    - Firefox：Violentmonkey 或 Greasemonkey
-2. 打开脚本文件 `./[YouTube] Channel Location [20260106] v1.0.0.user.js`
+2. 打开脚本文件 `./userscript/[YouTube] Channel Location.user.js`
 3. 在 GitHub 页面点击 `Raw`，由脚本管理器弹出安装页后确认安装
 
 ## 使用
@@ -38,7 +39,7 @@
 
 ## 工作原理（简述）
 
-- 对频道链接（`/@...`、`/channel/...`、`/c/...`、`/user/...`）进行扫描，并在合适位置插入徽标
+- 频道页使用顶部专用注入；其他列表页扫描频道链接（`/@...`、`/channel/...`、`/c/...`、`/user/...`）并在合适位置插入徽标
 - 将频道 URL 规范化为对应的 `.../about` 页面，并通过 `fetch(..., { credentials: 'include' })` 拉取 HTML
 - 从 About 页 HTML 中解析国家/地区字段并显示；结果可写入本地缓存（GM 存储或 `localStorage`）
 
@@ -49,6 +50,12 @@
   - YouTube 频繁改版，若页面结构变化导致失效，可在 Issues 里反馈（附页面链接与截图更容易定位）
 - **显示 `❓`？**
   - 通常表示频道没有在 About 页公开国家/地区信息，或该字段无法从页面中解析到
+
+## 测试
+
+```bash
+node --test tests/channel-page-placement.test.mjs
+```
 
 ## 许可协议
 
